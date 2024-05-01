@@ -3,6 +3,7 @@ package com.isaacandra.API_Rest.controller;
 import com.isaacandra.API_Rest.domain.user.CreateUserDTO;
 import com.isaacandra.API_Rest.domain.user.UserDTO;
 import com.isaacandra.API_Rest.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -20,6 +22,7 @@ public class UserController {
     // Endpoint para obter todos os usuários
     @GetMapping
     public ResponseEntity<List<UserDTO>> getAllUsers() {
+        log.info("Pegando todos usuarios pelo endpoint /api/users");
         List<UserDTO> users = userService.findAll();
         return ResponseEntity.ok(users);
     }

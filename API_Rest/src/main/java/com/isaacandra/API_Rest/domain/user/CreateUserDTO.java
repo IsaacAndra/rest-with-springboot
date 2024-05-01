@@ -1,4 +1,7 @@
 package com.isaacandra.API_Rest.domain.user;
 
-public record CreateUserDTO(String userName, String address, String gender) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record CreateUserDTO(@NotBlank String userName, @NotBlank String address,@NotBlank String gender) {
 }
