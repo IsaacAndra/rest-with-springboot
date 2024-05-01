@@ -15,14 +15,14 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 
     @ExceptionHandler(UserNotFoundException.class)
     private ResponseEntity<UserNotFoundMessage> userNotFoundHanler(UserNotFoundException e){
-        UserNotFoundMessage threatResponse = new UserNotFoundMessage(HttpStatus.NOT_FOUND,e.getMessage());
+        UserNotFoundMessage threatResponse = new UserNotFoundMessage(HttpStatus.NOT_FOUND.value(),e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(threatResponse);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     private ResponseEntity<ConstraintViolationMessage> violatedReqHandler(ConstraintViolationException e){
-        ConstraintViolationMessage thraetResponse = new ConstraintViolationMessage(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(thraetResponse);
+        ConstraintViolationMessage thraetResponse = new ConstraintViolationMessage(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(thraetResponse);
     }
 
 }

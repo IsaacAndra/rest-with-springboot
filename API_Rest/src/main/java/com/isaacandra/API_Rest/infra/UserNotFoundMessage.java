@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 public class UserNotFoundMessage {
-    private HttpStatus status;
+    private int status;
     private String message;
 
 }
