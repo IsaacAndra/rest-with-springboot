@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/users")
-@Tag(name = "People", description = "Endpoints for Manager People")
+@Tag(name = "Users", description = "Endpoints for Manager People")
 public class UserController {
 
     @Autowired
@@ -28,8 +28,8 @@ public class UserController {
 
     // Endpoint para obter todos os usuários
     @GetMapping
-    @Operation(summary = "Finds all People", description = "Finds all People",
-    tags = {"People"},
+    @Operation(summary = "Finds all Users", description = "Finds all Users",
+    tags = {"Users"},
     responses = {
             @ApiResponse(description = "Success", responseCode = "200"),
             @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -44,8 +44,8 @@ public class UserController {
 
     // Endpoint para obter um usuário por ID
     @GetMapping("/{id}")
-    @Operation(summary = "Find a Person", description = "Find a Person",
-            tags = {"People"},
+    @Operation(summary = "Find a User", description = "Find a User",
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200"),
                     @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
@@ -61,8 +61,8 @@ public class UserController {
 
     // Endpoint para criar um novo usuário
     @PostMapping
-    @Operation(summary = "Adds a new Person", description = "Adds a new Person",
-            tags = {"People"},
+    @Operation(summary = "Adds a new User", description = "Adds a new User",
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200"),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -76,8 +76,8 @@ public class UserController {
 
     // Endpoint para atualizar um usuário existente
     @PutMapping("/{id}")
-    @Operation(summary = "Update a Person", description = "Update a Person",
-            tags = {"People"},
+    @Operation(summary = "Update a User", description = "Update a User",
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Updated", responseCode = "200"),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -92,8 +92,8 @@ public class UserController {
 
     // Endpoint para excluir um usuário por ID
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete a Person", description = "Delete a Person",
-            tags = {"People"},
+    @Operation(summary = "Delete a User", description = "Delete a User",
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "No Content", responseCode = "204"),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),

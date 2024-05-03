@@ -1,6 +1,5 @@
 package com.isaacandra.API_Rest.domain.user;
 
-import com.isaacandra.API_Rest.exceptions.ConstraintViolationException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
