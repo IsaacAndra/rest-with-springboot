@@ -1,5 +1,6 @@
 package com.isaacandra.API_Rest.domain.user;
 
+import com.isaacandra.API_Rest.exceptions.ConstraintViolationException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,4 +28,21 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
+    public User(CreateUserDTO data) {
+        this.userName = data.userName();
+        this.address = data.address();
+        this.gender = data.gender();
+    }
+
+    public void updatedUser(EditUserDTO data) {
+        if (data.userName() != null){
+            this.userName = data.userName();
+        }
+        if (data.address() != null){
+            this.address = data.address();
+        }
+        if (data.gender() != null){
+            this.gender = data.gender();
+        }
+    }
 }

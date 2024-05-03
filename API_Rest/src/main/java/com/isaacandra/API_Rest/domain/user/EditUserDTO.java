@@ -1,9 +1,8 @@
 package com.isaacandra.API_Rest.domain.user;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-public record CreateUserDTO(
+public record EditUserDTO(
         @NotBlank
         String userName,
         @NotBlank
