@@ -1,14 +1,14 @@
 package com.isaacandra.API_Rest.controller;
 
 import com.isaacandra.API_Rest.domain.user.CreateUserDTO;
+import com.isaacandra.API_Rest.domain.user.EditUserDTO;
 import com.isaacandra.API_Rest.domain.user.UserDTO;
 import com.isaacandra.API_Rest.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +38,6 @@ public class UserController {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
     })
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-        log.info("Pegando todos usuarios pelo endpoint /api/users");
         List<UserDTO> users = userService.findAll();
         return ResponseEntity.ok(users);
     }
@@ -70,7 +69,7 @@ public class UserController {
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             })
-    public ResponseEntity<UserDTO> createUser(@RequestBody CreateUserDTO createUserDTO) {
+    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid CreateUserDTO createUserDTO) {
         UserDTO newUser = userService.createUser(createUserDTO);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
@@ -86,8 +85,8 @@ public class UserController {
                     @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             })
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody CreateUserDTO updateUserDTO) {
-        UserDTO updatedUser = userService.updateUser(id, updateUserDTO);
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody @Valid EditUserDTO data) {
+        UserDTO updatedUser = userService.updateUser(id, data);
         return ResponseEntity.ok(updatedUser);
     }
 
