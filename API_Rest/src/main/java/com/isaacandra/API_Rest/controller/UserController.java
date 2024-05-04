@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Endpoint para obter todos os usuários
+    // Endpoint to get all users.
     @GetMapping
     @Operation(summary = "Finds all Users", description = "Finds all Users",
     tags = {"Users"},
@@ -42,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    // Endpoint para obter um usuário por ID
+    // Endpoint to get a user from ID
     @GetMapping("/{id}")
     @Operation(summary = "Find a User", description = "Find a User",
             tags = {"Users"},
@@ -59,7 +59,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // Endpoint para criar um novo usuário
+    // Endpoint to create a user.
     @PostMapping
     @Operation(summary = "Adds a new User", description = "Adds a new User",
             tags = {"Users"},
@@ -74,7 +74,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    // Endpoint para atualizar um usuário existente
+    // Endpoint to update a user.
     @PutMapping("/{id}")
     @Operation(summary = "Update a User", description = "Update a User",
             tags = {"Users"},
@@ -90,7 +90,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    // Endpoint para excluir um usuário por ID
+    // Endpoint to delete a user from ID
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a User", description = "Delete a User",
             tags = {"Users"},
