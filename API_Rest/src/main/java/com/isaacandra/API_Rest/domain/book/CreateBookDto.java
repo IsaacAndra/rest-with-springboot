@@ -3,13 +3,14 @@ package com.isaacandra.API_Rest.domain.book;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public record CreateBookDto(
         String author,
         @NotNull
-        LocalDateTime launchDate,
+        Date launchDate,
         @NotNull
-        Float price,
+        Double price,
         String title
 ) {
 }

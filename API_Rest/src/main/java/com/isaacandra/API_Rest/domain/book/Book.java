@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity(name = "book")
 @Table(name = "books")
@@ -24,10 +25,11 @@ public class Book {
     private String author;
 
     @Column(name = "launch_date")
-    private LocalDateTime launchDate;
+    @Temporal(TemporalType.DATE)
+    private Date launchDate;
 
     @Column(name = "price")
-    private Float price;
+    private Double price;
 
     @Column(name = "title")
     private String title;
