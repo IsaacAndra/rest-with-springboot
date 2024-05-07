@@ -28,7 +28,7 @@ public class UserController {
 
     // Endpoint to get all users.
     @GetMapping
-    @Operation(summary = "Finds all Users", description = "Finds all Users",
+    @Operation(summary = "Find all Users", description = "Find all Users",
     tags = {"Users"},
     responses = {
             @ApiResponse(description = "Success", responseCode = "200"),
