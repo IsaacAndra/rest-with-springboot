@@ -27,8 +27,30 @@ public class Book {
     private LocalDateTime launchDate;
 
     @Column(name = "price")
-    private float price;
+    private Float price;
 
     @Column(name = "title")
     private String title;
+
+    public Book(CreateBookDto data) {
+        this.author = data.author();
+        this.launchDate = data.launchDate();
+        this.price = data.price();
+        this.title = data.title();
+    }
+
+    public void updatedUser(EditBookDto data) {
+        if (data.author() != null){
+            this.author = data.author();
+        }
+        if (data.launchDate() != null){
+            this.launchDate = data.launchDate();
+        }
+        if (data.price() != null){
+            this.price = data.price();
+        }
+        if (data.title() != null){
+            this.title = data.title();
+        }
+    }
 }
