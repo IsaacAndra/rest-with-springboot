@@ -1,9 +1,8 @@
-package com.isaacandra.API_Rest.infra;
+package com.isaacandra.API_Rest.exceptions.messages;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
 @AllArgsConstructor
 @Getter
