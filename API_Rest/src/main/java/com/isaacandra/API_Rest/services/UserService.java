@@ -22,7 +22,7 @@ public class UserService {
 
     public UserDTO findById(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with ID " + id + " was Not Found"));
-        log.info("Usuario por Id pelo endpoint /users");
+        log.info("User by Id from endpoint /users");
         return mapToUserDTO(user);
     }
 
@@ -31,7 +31,7 @@ public class UserService {
         if (users.isEmpty()){
             throw new UserNotFoundException();
         }
-        log.info("Todos usuarios pelo endpoint /users");
+        log.info("All Users from endpoint /users");
         return users.stream().map(this::mapToUserDTO).collect(Collectors.toList());
     }
 
@@ -43,7 +43,7 @@ public class UserService {
         }
 
         User savedUser = userRepository.save(user);
-        log.info("Criando usuario pelo endpoint /users");
+        log.info("Creating User from endpoint /users");
 
         return mapToUserDTO(savedUser);
     }
@@ -56,14 +56,14 @@ public class UserService {
         }
         user.updatedUser(data);
         userRepository.save(user);
-        log.info("Atualizando o usuario pelo endpoint /users");
+        log.info("Updating User from endpoint /users/id");
         return mapToUserDTO(user);
     }
 
     public void deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with Id " + id + " was Not Found"));
         userRepository.delete(user);
-        log.info("Deletando usuario por ID pelo endpoint /users");
+        log.info("Deleting User by ID from endpoint /users");
     }
 
 
