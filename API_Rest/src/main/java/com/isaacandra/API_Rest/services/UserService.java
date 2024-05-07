@@ -22,7 +22,7 @@ public class UserService {
 
     public UserDTO findById(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with ID " + id + " was Not Found"));
-        log.info("Usuario por Id pelo endpoint /api/users");
+        log.info("Usuario por Id pelo endpoint /users");
         return mapToUserDTO(user);
     }
 
@@ -31,7 +31,7 @@ public class UserService {
         if (users.isEmpty()){
             throw new UserNotFoundException();
         }
-        log.info("Todos usuarios pelo endpoint /api/users");
+        log.info("Todos usuarios pelo endpoint /users");
         return users.stream().map(this::mapToUserDTO).collect(Collectors.toList());
     }
 
@@ -43,27 +43,27 @@ public class UserService {
         }
 
         User savedUser = userRepository.save(user);
-        log.info("Criando usuario pelo endpoint /api/users");
+        log.info("Criando usuario pelo endpoint /users");
 
         return mapToUserDTO(savedUser);
     }
 
     public UserDTO updateUser(Long id, EditUserDTO data) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with ID " + id + " was Not Found"));
-        if (data.userName() == null && data.address() == null && data.gender() ==null){
+        if (data.userName() == null && data.address() == null && data.gender() == null){
             throw new ConstraintViolationException("Username, address, and gender cannot be null");
 
         }
         user.updatedUser(data);
         userRepository.save(user);
-        log.info("Atualizando o usuario pelo endpoint /api/users");
+        log.info("Atualizando o usuario pelo endpoint /users");
         return mapToUserDTO(user);
     }
 
     public void deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with Id " + id + " was Not Found"));
         userRepository.delete(user);
-        log.info("Deletando usuario por ID pelo endpoint /api/users");
+        log.info("Deletando usuario por ID pelo endpoint /users");
     }
 
 
