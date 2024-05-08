@@ -14,7 +14,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API_Rest with Java 17 & Spring Boot 3")
-                        .version("")
+                        .version("v1")
                         .description("Some description")
                         .termsOfService("")
                         .license(
